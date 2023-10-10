@@ -1,0 +1,39 @@
+version: "3.8"
+networks:
+  rbh-network:
+    name: "rbh-network"
+services:
+  mysqldb:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: robinhood
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - rbh-network
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./db/data.sql:/docker-entrypoint-initdb.d/data.sql
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: node-mysql-app
+    ports:
+      - 8000:8000
+    depends_on:
+      - mysqldb
+    networks:
+      - rbh-network
+    stdin_open: true
+    tty: true
+
+volumes:
+  db-config:
+  db-data:
