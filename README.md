@@ -29,5 +29,5 @@ This documentation is written for a simple To-Do-List API in accordance to Lo-FI
   
 ### User related
 
-* [List Users](docs/card/list.md) : `GET /api/users/`
-* [Add User](docs/card/add.md) : `POST /api/user/`
+* [List Users](docs/user/list.md) : `GET /api/users/`
+* [Add User](docs/user/add.md) : `POST /api/user/`
