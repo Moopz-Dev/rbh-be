@@ -14,18 +14,10 @@ exports.add = async (req, res, next) => {
     const { username, email } = req.body;
 
     //vvalidate input
-    if (!username || !email) {
+    if (!username || !username.trim(" ") || !email) {
       return res
         .status(400)
         .json({ message: "One or more required fields are missing" });
-    }
-
-    //check for username duplication
-    const existUsername = await User.findOne({ where: { username: username } });
-    if (existUsername) {
-      return res
-        .status(400)
-        .json({ message: "This username is already taken" });
     }
 
     //check for invalid email
@@ -34,6 +26,14 @@ exports.add = async (req, res, next) => {
     );
     if (!isEmail) {
       return res.status(400).json({ message: "Invalid Email Format." });
+    }
+
+    //check for username duplication
+    const existUsername = await User.findOne({ where: { username: username } });
+    if (existUsername) {
+      return res
+        .status(400)
+        .json({ message: "This username is already taken" });
     }
 
     //check for email duplication
