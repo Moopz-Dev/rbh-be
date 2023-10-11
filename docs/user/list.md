@@ -1,4 +1,4 @@
-# List Cards
+# List Users
 
 Returns all users inside the db. 
 

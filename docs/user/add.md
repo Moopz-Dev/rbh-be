@@ -1,4 +1,4 @@
-# Add Comment
+# Add User
 
 Create new user entry in the database. 
 
