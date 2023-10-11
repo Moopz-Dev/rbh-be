@@ -1,4 +1,3 @@
-const { Op, Sequelize } = require("sequelize");
 const { Card, User, Comment } = require("../models");
 const CardEnum = require("../config/cardStatusEnum");
 const { getFormattedDateAndTime } = require("../utils/dateTimeFormatter");
@@ -140,7 +139,7 @@ exports.update = async (req, res, next) => {
 
     //check if card is created by given user
 
-    if (card.userId !== userId) {
+    if (card.userId != userId) {
       return res.status(403).json({
         message: "The given userId is not the owner of the card.",
       });
@@ -172,7 +171,7 @@ exports.remove = async (req, res, next) => {
 
     //check if card is created by given user
 
-    if (card.userId !== userId) {
+    if (card.userId != userId) {
       return res.status(403).json({
         message: "The given userId is not the owner of the card.",
       });
@@ -195,7 +194,16 @@ exports.add = async (req, res, next) => {
     if (!userId || !title || !description) {
       return res
         .status(400)
-        .json({ message: "One or more required fields are empty or null" });
+        .json({ message: "One or more required fields are missing" });
+    }
+    //check for empty title
+    if (!title.trim(" ")) {
+      return res.status(400).json({ message: "Title cannot be empty" });
+    }
+
+    //check for empty description
+    if (!description.trim(" ")) {
+      return res.status(400).json({ message: "Description cannot be empty" });
     }
 
     //check if user exists
@@ -208,7 +216,7 @@ exports.add = async (req, res, next) => {
       return res.status(400).json({ message: "User does not exist" });
     }
 
-    const card = await Card.create({
+    await Card.create({
       userId,
       title,
       description,
