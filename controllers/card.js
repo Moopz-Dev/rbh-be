@@ -101,13 +101,14 @@ exports.getOneCard = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { description, status, title } = req.body;
+    const { description, title, status: reqBodyStatus } = req.body;
 
     const updateData = {};
 
-    if (status) {
+    if (reqBodyStatus) {
       //check if in enum
-      if (!CardEnum.hasOwnProperty(status.toUpperCase())) {
+      const status = CardEnum[reqBodyStatus.toUpperCase()];
+      if (!status) {
         return res.status(400).json({ message: "Invalid status" });
       }
       updateData.status = status;

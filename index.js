@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const parser = require("body-parser");
 const { sequelize } = require("./models/index");
-// require("dotenv").config();
+require("dotenv").config();
 
 const { readdirSync } = require("fs");
 app = express();
@@ -14,10 +14,6 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(parser.json());
 
-// sequelize
-//   .sync()
-//   .then((result) => console.log(result))
-//   .catch((err) => console.log("EEEERRRROOOOOOR", err));
 //routes
 readdirSync("./routes").map((file) =>
   app.use("/api/", require("./routes/" + file))
@@ -25,18 +21,16 @@ readdirSync("./routes").map((file) =>
 
 //error handling
 app.use((req, res) => {
-  res.status(404).json({ message: "resource not found on this server" });
+  res.status(404).json({ message: "Resource not found on this server" });
 });
 
 app.use((err, req, res, next) => {
   console.log(err);
-  res.status(500).json({ message: err.message });
+  res.status(500).json({ message: "Internal Server Error" });
 });
 
-const port =
-  //  process.env.PORT ||
-  8000;
+const port = process.env.NODE_PORT || 8000;
 
 app.listen(port, () => {
-  console.log(`App listening on porttt ${port}`);
+  console.log(`App listening on port ${port}`);
 });

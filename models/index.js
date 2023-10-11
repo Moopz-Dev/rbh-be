@@ -21,18 +21,9 @@ const conf = dbConfig.development;
 
 const sequelize = new Sequelize(conf.database, conf.username, conf.password, {
   host: conf.host,
-  // host: "127.0.0.1",
-  dialect: "mysql",
+  port: conf.port,
+  dialect: conf.dialect,
 });
-
-// "development": {
-//   "username": "root",
-//   "password": "root",
-//   "database": "robinhood",
-//   "host": "192.168.1.1",
-//   "dialect": "mysql",
-//   "port": 3306
-// }
 
 fs.readdirSync(__dirname)
   .filter((file) => {
