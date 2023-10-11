@@ -6,7 +6,6 @@ Update comment entry in the database.
 
 **Method** : `PUT `
 
-` `
 **Request Example(s)**:
 
 * `PUT localhost:8000/api/comment/5/`

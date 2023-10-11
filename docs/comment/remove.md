@@ -6,7 +6,6 @@ Remove comment from the database.
 
 **Method** : `DELETE `
 
-` `
 **Request Example(s)**:
 
 * `DELETE localhost:8000/api/comment/1/`
