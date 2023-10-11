@@ -34,6 +34,7 @@ exports.list = async (req, res, next) => {
       const formattedDateTime = getFormattedDateAndTime(card.createdAt);
       card.createdDate = formattedDateTime[0];
       card.createdTime = formattedDateTime[1];
+      card.description = card.description.slice(0, 100);
       delete card.createdAt;
     });
 
