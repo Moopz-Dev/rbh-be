@@ -1,6 +1,8 @@
 # RBH - BE - PreTest
 
-This documentation is written for a simple To-Do-List API in accordance to Lo-FI requirement.
+This documentation is written for a simple To-Do-List API in accordance to Lo-FI requirement. 
+* API server uses port `8000`. 
+* DB uses port `3306`
 
 ## How to start service
 

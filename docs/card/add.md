@@ -42,7 +42,7 @@ Create new card entry in the database.
 
 ```json
 {
-    "message": "One or more required fields are empty or null"
+    "message": "One or more required fields are missing"
 }
 ```
 <hr>
@@ -55,6 +55,6 @@ Create new card entry in the database.
 
 ```json
 {
-    { "message": "User does not exist" }
+     "message": "User does not exist" 
 }
 ```
