@@ -35,93 +35,153 @@ CREATE TABLE comments (
 );
 
 INSERT INTO
-    users (username, email)
-VALUES
-    ('Abigail Williams', 'abigail@gmail.com'),
-    ('Bruno Mraz', 'bruno@gmail.com'),
-    ('Charlie Chaplin', 'charlie@gmail.com'),
-    ('David Beckham', 'david@gmail.com'),
-    ('Emma Watsons', 'emma@gmail.com');
-
-INSERT INTO
-    cards (title, status, description, user_id)
+    users (username, email, created_at, updated_at)
 VALUES
     (
-        'Job Interview',
-        'To Do',
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
-        1
+        'Abigail Williams',
+        'abigail@gmail.com',
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
-        'Job Interview',
-        'To Do',
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
-        2
+        'Bruno Mraz',
+        'bruno@gmail.com',
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
-        'Job Interview',
-        'To Do',
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
-        3
+        'Charlie Chaplin',
+        'charlie@gmail.com',
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
-        'Job Interview',
-        'To Do',
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
-        4
+        'David Beckham',
+        'david@gmail.com',
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
-        'Job Interview',
-        'To Do',
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
-        5
+        'Emma Watsons',
+        'emma@gmail.com',
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     );
 
 INSERT INTO
-    comments (text, user_id, card_id)
+    cards (
+        title,
+        status,
+        description,
+        user_id,
+        created_at,
+        updated_at
+    )
+VALUES
+    (
+        'Job Interview',
+        'To Do',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
+        1,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
+    ),
+    (
+        'Job Interview',
+        'To Do',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
+        2,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
+    ),
+    (
+        'Job Interview',
+        'To Do',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
+        3,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
+    ),
+    (
+        'Job Interview',
+        'To Do',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
+        4,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
+    ),
+    (
+        'Job Interview',
+        'To Do',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit recusandae dolorem quam repellendus dicta vel assumenda, voluptates aliquam magni culpa repudiandae porro aspernatur quaerat, vitae unde beatae nesciunt explicabo earum nisi delectus rem. Vel adipisci mollitia voluptate quaerat eos officia omnis corrupti illo porro? Praesentium debitis harum voluptates est doloremque quaerat earum, fugiat, blanditiis necessitatibus perferendis ducimus. Suscipit ipsam blanditiis molestiae, assumenda quis voluptatem ad. Explicabo, porro hic. Dolores quod, sunt accusantium tempore illo iure eligendi nisi totam qui obcaecati excepturi eveniet, odio voluptatum ipsum fuga? Officiis tempore itaque nesciunt reprehenderit, quis distinctio odio quasi modi consectetur cupiditate minima facere.',
+        5,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
+    );
+
+INSERT INTO
+    comments (text, user_id, card_id, created_at, updated_at)
 VALUES
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         1,
-        3
+        3,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         2,
-        5
+        5,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         4,
-        1
+        1,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         2,
-        1
+        1,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         5,
-        4
+        4,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         3,
-        5
+        5,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         2,
-        3
+        3,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         1,
-        4
+        4,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     ),
     (
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
         5,
-        1
+        1,
+        '2020-01-01 10:10:10',
+        '2020-01-01 10:10:10'
     );
