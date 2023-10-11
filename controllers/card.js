@@ -1,6 +1,6 @@
 const { Op, Sequelize } = require("sequelize");
 const { Card, User, Comment } = require("../models");
-const CardEnum = require("../config/cardEnum");
+const CardEnum = require("../config/cardStatusEnum");
 const { getFormattedDateAndTime } = require("../utils/dateTimeFormatter");
 
 //with pagination
@@ -101,7 +101,7 @@ exports.getOneCard = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { description, title, status: reqBodyStatus } = req.body;
+    const { userId, description, title, status: reqBodyStatus } = req.body;
 
     const updateData = {};
 
@@ -138,6 +138,14 @@ exports.update = async (req, res, next) => {
       });
     }
 
+    //check if card is created by given user
+
+    if (card.userId !== userId) {
+      return res.status(403).json({
+        message: "The given userId is not the owner of the card.",
+      });
+    }
+
     await card.update({
       ...updateData,
     });
@@ -152,18 +160,21 @@ exports.remove = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    //check empty
-    if (!id.trim(" ")) {
-      return res.status(400).json({
-        message: "card ID cannot be empty",
-      });
-    }
+    const { userId } = req.body;
 
     //check if card exist
     const card = await Card.findOne({ where: { id } });
     if (!card) {
       return res.status(404).json({
         message: "The card does not exist. It may have already been deleted",
+      });
+    }
+
+    //check if card is created by given user
+
+    if (card.userId !== userId) {
+      return res.status(403).json({
+        message: "The given userId is not the owner of the card.",
       });
     }
 
@@ -186,6 +197,17 @@ exports.add = async (req, res, next) => {
         .status(400)
         .json({ message: "One or more required fields are empty or null" });
     }
+
+    //check if user exists
+    const existsUser = await User.findOne({
+      where: {
+        id: userId,
+      },
+    });
+    if (!existsUser) {
+      return res.status(400).json({ message: "User does not exist" });
+    }
+
     const card = await Card.create({
       userId,
       title,
