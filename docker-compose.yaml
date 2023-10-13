@@ -9,10 +9,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: robinhood
-    ports:
-      - 3306:3306
-    expose:
-      - 3306
+    # ports:
+    #   - 3306:3306
+    # expose:
+    #   - 3306
     networks:
       - rbh-network
     volumes:
@@ -25,14 +25,24 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: node-mysql-app
-    ports:
-      - 8000:8000
     depends_on:
       - mysqldb
     networks:
       - rbh-network
     stdin_open: true
     tty: true
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    networks:
+      - rbh-network
 
 volumes:
   db-config:
